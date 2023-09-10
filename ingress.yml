@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: baz-ingress
+  namespace: baz-service
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /baz
+        pathType: Prefix
+        backend:
+          service:
+            name: baz-service 
+            port:
+              number: 8080
