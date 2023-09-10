@@ -1,7 +1,7 @@
-# POC k8s atomic deployment (safety first)
+# POC: k8s atomic deployment (safety first)
 
 This repo demonstrates how k8s deployment can be safe or unsafe depending on
-how the `kubectl apply` command is used
+how the `kubectl apply` command is used.
 
 # Prerequisites
 
@@ -9,7 +9,7 @@ To jump into the demo as smoothly as possible, it's recommended that the
 following are installed beforehand:
 1. k8s itself (e.g. if using Docker Desktop, the built-in Kubernetes is enough)
 2. [yq](https://github.com/mikefarah/yq/releases) - a library to parse yaml (.yml) files
-3. [ingress-nginx for k8s](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start) (or an equivalence approach to help reach (e.g. `curl`) the k8s service)
+3. [ingress-nginx for k8s](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start) or an equivalence approach to help reach (e.g. `curl`) the k8s service
 
 # Setup
 
@@ -95,7 +95,7 @@ The Deployment "baz-deployment" is invalid: spec.selector: Invalid value: v1.Lab
 ```
 
 As you can see, the deployment still failed. The idea of this demo is not to fix this k8s error,
-but to fail safely. This time, the `--dry-run` argument did it job well, and the script "failed early",
+but to fail safely. This time, the `--dry-run` argument did its job well: the script "failed early",
 so it exited before it had the chance to corrupt the running system.
 
 Let's curl again to make sure things are still running well:
